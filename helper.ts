@@ -236,3 +236,13 @@ export const convertToSeconds = (time: string): number =>  {
   return totalSeconds;
 }
 
+export const secondsToTimeFormat = (totalSeconds: number): string => {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+  const hourString = hours.toString().padStart(2, '0');
+  const minuteString = minutes.toString().padStart(2, '0');
+
+  return `${hourString}:${minuteString}`;
+}
+
