@@ -4,6 +4,7 @@ import Offre from "../models/Offre";
 import { Question } from "../models/Question";
 import { ResponseQuestion } from "../models/ResponseQuestion";
 import Test from "../models/Test";
+import { TypeOption } from "../types";
 import { ResponseCertificationTest } from "../types/response-request";
 import { offres } from "./testData";
 
@@ -245,4 +246,71 @@ export const secondsToTimeFormat = (totalSeconds: number): string => {
 
   return `${hourString}:${minuteString}`;
 }
+
+export const addOrRemoveElement = (arr: any[], element: any): any[] => {
+  const index = arr.indexOf(element);
+
+  if (index === -1) {
+    // Element not found, add it to the array
+    arr.push(element);
+  } else {
+    // Element found, remove it from the array
+    arr.splice(index, 1);
+  }
+
+  return arr;
+}
+
+export const uniqueElements = (arr1: any[], arr2: any[]) => {
+  // Parcourir chaque élément du premier tableau
+  for (let i = 0; i < arr1.length; i++) {
+    // Vérifier si l'élément existe déjà dans le deuxième tableau
+    if (arr2.includes(arr1[i])) {
+      // L'élément est déjà présent, on le retire du premier tableau
+      arr1.splice(i, 1);
+      i--; // Décrémenter i pour éviter de sauter l'élément suivant
+    } else {
+      // Si l'élément est unique, on l'ajoute dans le deuxième tableau
+      arr2.push(arr1[i]);
+    }
+  }
+  // Retourner le deuxième tableau avec les éléments uniques
+  return arr2;
+}
+
+export const uniqueElements2 = (arr1: any[], arr2: any[]) => {
+  // Parcourir chaque élément du premier tableau
+  for (let i = 0; i < arr1.length; i++) {
+    // Vérifier si l'élément existe déjà dans le deuxième tableau
+    if (arr2.includes(arr1[i])) {
+      // L'élément est déjà présent, on le retire du premier tableau
+      arr1.splice(i, 1);
+      i--; // Décrémenter i pour éviter de sauter l'élément suivant
+    } else {
+      // Si l'élément est unique, on l'ajoute dans le deuxième tableau
+      arr2.push(arr1[i]);
+    }
+  }
+  // Retourner le deuxième tableau avec les éléments uniques
+  return arr2;
+}
+
+
+export const addNewTestOption =(testOptions: TypeOption[],tabTestIds: number[]) => {
+  // on ajoute l'element dans tab1 s'il ne s'y trouve pas
+  const tab1 = uniqueElements(testOptions.map(option => option.test_id),tabTestIds);
+  let newTabs = tab1;
+
+  // pour chaque element de tab1 
+  tab1.forEach((element) => {
+    // verifier que l'element ne se trouve pas dans tabs 'testOptions'
+    if(!testOptions.map(option => option.test_id).includes(element)){ // si oui 
+      // le delete l'element de tab1
+      newTabs = newTabs.filter(el => el !== element)
+    }
+  })
+
+  return newTabs;
+}
+
 
