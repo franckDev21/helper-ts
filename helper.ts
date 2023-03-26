@@ -314,3 +314,33 @@ export const addNewTestOption =(testOptions: TypeOption[],tabTestIds: number[]) 
 }
 
 
+/**
+ * 
+ * Exemple
+ * let myArray: number[] = [3, 5, 1, 7, 2, 8];
+ * let elementToMove: number = 5;
+ * let newPosition: number = 2;
+ * console.log(reorderArrayByElement(myArray, elementToMove, newPosition)); // affiche [3, 1, 5, 7, 2, 8]
+ * 
+ * @param arr 
+ * @param element 
+ * @param new_position 
+ * @returns 
+ */
+export const reorderArrayByElement = <T>(arr: T[], element: T, new_position: number): T[] => {
+  // On récupère l'indice de l'élément dans le tableau initial
+  const old_index = arr.indexOf(element);
+  // Si l'élément n'existe pas dans le tableau, on renvoie le tableau initial sans modification
+  if (old_index === -1) {
+    return arr;
+  }
+  // On retire l'élément initial du tableau
+  const arr_without_element = arr.filter((e, i) => i !== old_index);
+  // On insère l'élément à la nouvelle position dans le tableau
+  const result = [...arr_without_element.slice(0, new_position), element, ...arr_without_element.slice(new_position)];
+  // On retourne le tableau réordonné
+  return result;
+}
+
+
+
