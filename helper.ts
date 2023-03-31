@@ -343,4 +343,20 @@ export const reorderArrayByElement = <T>(arr: T[], element: T, new_position: num
 }
 
 
+export const convertSeconds = (seconds: number): string => {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  if (hours > 0) {
+    return `${hours} heure${hours > 1 ? 's' : ''}`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes > 1 ? 's' : ''}`;
+  } else {
+    return `${remainingSeconds} seconde${remainingSeconds > 1 ? 's' : ''}`;
+  }
+}
+
+
+
 
