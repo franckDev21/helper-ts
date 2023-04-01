@@ -7,6 +7,8 @@ import Test from "../models/Test";
 import { TypeOption } from "../types";
 import { ResponseCertificationTest } from "../types/response-request";
 import { offres } from "./testData";
+import { format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 export const getOfferById = (id: number): Offre | undefined => {
   return offres.find((offre) => offre.id === id);
@@ -358,5 +360,21 @@ export const convertSeconds = (seconds: number): string => {
 }
 
 
+/**
+ * 
+    const formattedDateTimeFr = formatDateFr(myDateTime);
+
+    console.log(formattedDateTimeFr); // Affiche '31 mars 2023 à 12:30' dans la console
+    const myDateTime = new Date('2023-03-31T12:30:00Z'); // Exemple de date/heure
+
+ * @param dateTime 
+ * @returns 
+ */
+export const formatDateFr = (dateTime: Date): string => {
+  const formattedDate = format(dateTime, 'dd MMMM yyyy', { locale: fr });
+  const formattedTime = format(dateTime, 'HH:mm', { locale: fr });
+
+  return `${formattedDate} à ${formattedTime}`;
+}
 
 
