@@ -34,6 +34,16 @@ export const getIdsWithTabNumber = (ids: string): number[] => {
   return tabTds;
 };
 
+
+export const convertCurrency = (
+  number: number,
+  currency: string = "EUR"
+): string =>
+  new Intl.NumberFormat("fr-FR", { style: "currency", currency }).format(
+    number
+  );
+
+
 export const allIdsExist = (tabIds: number[]) => {
   let allExist: boolean = true;
   tabIds.forEach((id) => {
