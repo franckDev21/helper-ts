@@ -408,6 +408,20 @@ export const convertDollarToFcfa = (dollars: number): string => {
   return formatter.format(fcfa);
 }
 
+export const calculAndCompareDate = (dateString: string): number => {
+ // Convertir la chaîne de caractères en objet Date
+ const date = new Date(dateString);
+
+ // Calculer la différence entre la date actuelle et la date donnée
+ const differenceMilliseconds = date.getTime() - Date.now();
+
+ // Convertir la différence en jours entiers
+ const jours = Math.ceil(differenceMilliseconds / (1000 * 60 * 60 * 24));
+
+ // Renvoyer le nombre de jours restants
+ return jours;
+}
+
 
 
 
