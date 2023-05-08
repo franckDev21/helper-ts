@@ -393,4 +393,21 @@ export const formatDateFr = (dateTime: Date): string => {
   return `${formattedDate} à ${formattedTime}`;
 }
 
+export const convertDollarToFcfa = (dollars: number): string => {
+  const tauxDeChange = 550; // taux de change du dollar en francs CFA
+  const fcfa = dollars * tauxDeChange; // conversion des dollars en francs CFA
+
+  // Formatage du résultat avec 2 décimales et un séparateur de milliers
+  const formatter = new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "XOF",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return formatter.format(fcfa);
+}
+
+
+
 
