@@ -422,6 +422,26 @@ export const calculAndCompareDate = (dateString: string): number => {
  return jours;
 }
 
+   
+ 
+export const trierPaysParOrdreAlphabetique = (
+  tableau: { value: string; label: string; code: string }[]
+): { value: string; label: string; code: string }[] => {
+  return tableau.slice().sort((a, b) => a.label.localeCompare(b.label));
+}
+
+export const trierParOrdreAlphabetique = (tableau: string[]): string[] => {
+  return tableau.slice().sort((a, b) => a.localeCompare(b));
+}
+
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const day = `${date.getDate()}`.padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 
 
