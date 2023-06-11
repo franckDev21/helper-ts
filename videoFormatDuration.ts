@@ -3,7 +3,6 @@ function getVideoDuration(videoPath: string): Promise<string> {
     const video = document.createElement('video');
     video.src = videoPath;
     
-
     video.addEventListener('loadedmetadata', () => {
       const videoDuration = video.duration;
       const formattedDuration = formatDuration(videoDuration);
