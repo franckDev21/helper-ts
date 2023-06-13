@@ -34,4 +34,3 @@ getVideoDuration(videoPath)
     console.error('Erreur lors de la récupération de la durée de la vidéo :', error);
   });
 
-
