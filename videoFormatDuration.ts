@@ -33,4 +33,3 @@ getVideoDuration(videoPath)
   .catch((error) => {
     console.error('Erreur lors de la récupération de la durée de la vidéo :', error);
   });
-
